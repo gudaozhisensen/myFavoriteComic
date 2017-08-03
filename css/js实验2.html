@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href=".."/>
+
+    <style>
+        div{
+            height: 50px;
+            width: 100px;
+            background-color: red;
+            margin: 10px;
+        }
+    </style>
+
+
+    <script type="text/javascript" src=".."></script>
+
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementsByTagName('div');
+            for(var i=0;i<oDiv.length;i++)
+            {
+                oDiv[i].timer=null;//在每个上都顶一个定时器
+                oDiv[i].onmouseover=function ()
+                {
+                    starMove(this,400);
+                };
+                oDiv[i].onmouseout=function ()
+                {
+                    starMove(this,100);
+                };
+            }
+
+
+            function starMove(obj,oTarget)
+            {
+
+                  clearInterval(obj.timer);
+                  obj.timer=setInterval(function ()
+                  {
+                    var speed=(oTarget-obj.offsetWidth)/9;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if (obj.offsetWidth==oTarget)//说明到位子了，可以把计时器关了
+                    {
+                        clearInterval(obj.timer);
+                    }else{
+                        obj.style.width=obj.offsetWidth+speed+'px';
+                    }
+                  },30);
+
+
+            }
+        };
+    </script>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
