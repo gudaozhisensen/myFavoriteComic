@@ -1,0 +1,293 @@
+
+/*顶部的banner*/
+#nav{
+    height: 50px;
+    width: auto;
+    background-color: #241f1e;
+
+}
+
+
+
+
+/*banner中的内容*/
+#nav_inner{
+    height: 50px;
+    width: 95%;
+    background-color:#2e2826;
+    margin: 0 auto;
+    /*盒子模型布局--定义父节点*/
+    display: flex;
+
+}
+#brand{
+    height: 50px;
+    width: 20%;
+    /*盒子模型布局--子节点实现*/
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow:row nowrap;
+    -ms-flex-flow:row nowrap;
+    flex-flow: row nowrap;
+}
+#bar{
+    height: auto;
+    width: 50%;
+    background-color: #2e2826;
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow:row nowrap;
+    -ms-flex-flow:row nowrap;
+    flex-flow: row nowrap;
+    position: relative;
+}
+#bar ul{  position: absolute;  }
+
+#bar li{
+    display: block;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Microsoft YaHei UI","Arial";
+    float: left;
+    line-height: 15px;
+    overflow: hidden;
+    padding: 17.5px 25px;
+}
+
+#bar a{
+    text-decoration: none;
+    color: #dcdcdc;
+}
+
+#bar li:hover{ background-color: #858c91;  }
+
+#bar a:hover{ color: #fff;  }
+
+#search{
+    height: auto;
+    width: 20%;
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow:row nowrap;
+    -ms--flex-flow:row nowrap;
+    flex-flow: row nowrap;
+    position: relative;
+    display: inline-block;
+}
+#search input{
+    display: inline-block;
+    position: absolute;
+    margin: 10px 0;
+    max-width: 80%;
+    border-radius: 30px;
+}
+#search span{  display: inline-block;  }
+
+
+
+
+/*登录与注册功能区*/
+#register{
+    height: auto;
+    width: 10%;
+    float: right;
+    /*background-color: white;*/
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow:row nowrap;
+    -ms--flex-flow:row nowrap;
+    flex-flow: row nowrap;
+}
+
+#register li{
+    list-style-type: none;
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+}
+
+#register li :hover{ border-bottom:solid 2px #ffff99;  }
+
+#register li a,#search span{
+    text-decoration: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    float: left;
+    margin:15px 5px;
+    line-height: 20px;
+}
+
+
+
+
+/*轮播图*/
+#carousel{width: auto;}
+
+
+/*轮播图内部灰色背景区*/
+#carousel_inner{
+    width:100%;
+    background-color: #b0acab;
+    margin: 0 auto;
+    position: relative;
+}
+
+.control{
+    width: 8%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    font-size: 80px;
+    text-align: center;
+    line-height: 550px;
+    color: #cdcdcd;
+    opacity: 0.5;
+}
+
+.control:hover{
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+#control-left{left: 0;}
+
+#control-right{right: 0;}
+
+
+/*图片导航圆圈*/
+.indicator{
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    list-style-type: none;
+    bottom: 4%;
+}
+
+.indicator li{
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+.indicator li:hover{  background-color: #FFFFFF;  }
+
+/*轮播图内图片*/
+#carousel_inner img{
+    margin: 0 auto;
+    display: block;
+    max-width: 90%;
+    height: auto;
+
+}
+
+
+
+
+/*中部内容区*/
+#content a{
+    color: #000;
+    text-decoration: none;
+}
+
+#content a:hover{ color: #FFFFFF;  }
+
+
+/*第一个展示漫画简介外部灰色背景框*/
+#tab1{
+    /*width: auto;*/
+    /*height:290px;*/
+    padding: 20px;
+    background: #f2f1ef;
+    text-align: center;
+    line-height: 15px;
+}
+#tab2{
+    padding: 20px;
+    background: #cfcfcf;
+    text-align: center;
+    line-height: 15px;
+}
+
+#tab3{
+    padding: 20px;
+    background: #eeeeee;
+    text-align: center;
+    line-height: 15px;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 90%;
+    /*上两句实现图片的排列贴着轮播图边缘*/
+    height:  260px;
+    /*display: inline-block;*/
+}
+
+/*tab内部内容区域,包含漫画封面的div*/
+.container_img{
+    width: 40%;
+    height: auto;
+    padding: 10px 10px;
+}
+
+#one_img,#thr_img{
+    float: left;
+}
+
+#two_img{
+    float: right;
+}
+
+.container_img img{
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+/*漫画封面图片鼠标效果*/
+.container_img img:hover{
+    box-shadow: 2px 2px 10px #355;
+    transform:translateY(-1px);
+}
+
+
+/*简介*/
+.container_text{
+    width: 50%;
+    height: auto;
+}
+
+#one_text,#thr_text{
+    float: right;
+}
+
+#two_text{
+    float: left;
+
+}
+
+.container_text h3{
+    margin: 8px 0 20px 0;
+    font-weight: normal;
+
+}
+
+.container_text p{
+    line-height: 25px;
+    color: #333;
+    text-indent: 30px;
+    font-weight: 500;
+    text-align: left;
+    padding: 0 0 10px 0;
+    overflow: hidden;
+}
+
+
+
+
+
+#footer{
+    height: 150px;
+    width: auto;
+    background-color: navajowhite;
+}
