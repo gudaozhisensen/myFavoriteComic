@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色、添加、删除表格行</title>
+    <script>
+        window.onload=function()
+        {
+        var oTab=document.getElementById('tab1');
+//        alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);
+//       隔行变色
+            var oldColor='';
+
+            for(var i=0;i<oTab.tBodies[0].rows.length;i++)//循环表格所有的行
+            {
+                oTab.tBodies[0].rows[i].onmouseover=function ()
+                {
+                    oldColor=this.style.background;//先把之前的颜色保存起来
+                    this.style.background='green';
+                };
+                oTab.tBodies[0].rows[i].onmouseout=function ()
+                {
+                    this.style.background=oldColor;
+                };
+
+                if(i%2)
+                {
+                    oTab.tBodies[0].rows[i].style.background='';
+
+                }else {
+                    oTab.tBodies[0].rows[i].style.background='#ccc';
+                }
+            }
+
+
+
+          //添加删除表格行
+
+            var oName=document.getElementById('name');
+            var oAge=document.getElementById('age');
+            var oBtn1=document.getElementById('btn1');
+            var id=oTab.tBodies[0].rows.length+1;
+
+            oBtn1.onclick=function ()
+            {
+                var oTr=document.createElement('tr');
+                var oTd=document.createElement('td');
+                oTd.innerHTML=id++;
+
+                oTr.appendChild(oTd);
+                var oTd=document.createElement('td');
+                oTd.innerHTML=oName.value;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML=oAge.value ;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML='<a href="javascript:;">删除</a>' ;
+                oTr.appendChild(oTd);
+
+                oTab.tBodies[0].appendChild(oTr);
+
+
+                for(var j=0;j<oTab.tBodies[0].rows.length;j++)//自行添加的循环，可以把输入的数据删了
+                {
+                    oTab.getElementsByTagName('a')[j].onclick=function ()
+                    {
+                        oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+                        //要在表格（tBodies）里进行删除操作，要删除的是整行，所以删除的是this的父级的父级，就是tr
+                    };
+                }
+            };
+        };
+
+
+    </script>
+    <link rel="stylesheet" type="text/css" href=".."/>
+
+    <script type="text/javascript" src="..">
+    </script>
+</head>
+<body>
+
+姓名：<input id="name" type="text" >
+年龄：<input id="age" type="text" >
+<input id="btn1" type="button" value="添加">
+
+<table id="tab1" border="1" width="500">
+    <thead>
+    <td>ID</td>
+    <td>姓名</td>
+    <td>年龄</td>
+    <td>操作</td>
+    <tbody>
+<tr>
+    <td>1</td>
+    <td>blue</td>
+    <td>25</td>
+    <td></td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>张三</td>
+    <td>34</td>
+    <td></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>李四</td>
+    <td>44</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>4</td>
+    <td>李而</td>
+    <td>33</td>
+    <td></td>
+</tr>
+</tbody>
+    </thead>
+</table>
+</body>
+</html>
