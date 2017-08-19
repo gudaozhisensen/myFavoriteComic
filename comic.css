@@ -1,0 +1,66 @@
+
+.page{
+    height: 100%;
+    background-color: #f5f5f5;
+    /*position: relative;*/
+}
+div{
+    display: block;
+}
+.comic-banner{
+    background: #222222;
+    height: 280px;
+    position: relative;
+    width: 100%;
+    min-width: 1100px;
+    z-index: 2;
+    overflow: hidden;
+    top: 50px;
+}
+
+.comic-banner img{
+    width: 1200px;
+    height: auto;
+    display: block;
+    padding: 50px 0 0 0;
+    margin: -232px auto;
+}
+
+.content{
+    width: 1100px;
+    margin: 0 auto ;
+    position: relative;
+}
+
+.info{
+    position: absolute;
+    bottom: 220px;
+    color: #fff;
+    min-width: 260px;
+    right: 10px;
+    text-align: right;
+    background: rgba(30,30,34,.5);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.info p{
+    line-height: 30px;
+}
+
+.main{
+    position: relative;
+    width: 1100px;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+.comic-book{
+    width: 1060px;
+    height: 400px;
+    padding:20px 0;
+    margin: 50px auto 0 auto;
+    background-color: white;
+
+}
