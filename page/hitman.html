@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>家庭教师hitman!</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <!--My css input here-->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/comic.css">
+    <link rel="stylesheet" href="../css/comment.css" />
+
+    <style>
+        @media screen and (min-device-width:375px) {
+            html {
+                font-size: 37.5px;
+            }
+
+
+        }
+
+        @media screen and (min-device-width:414px) {
+            html {
+                font-size: 41.4px;
+            }
+
+
+        }
+    </style>
+
+    <!--js input here-->
+
+    <!--<script src="/js/vendor/modernizr-2.8.3.min.js"></script>-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/commet.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#l1").click(function() {
+                $("#list").show();
+                $("#list2").hide();
+            });
+            $("#l2").click(function() {
+                $("#list2").show();
+                $('#list').hide();
+
+            });
+
+            $(function() {
+                $('.content').flexText();
+            });
+
+            //textarea限制字数
+            function keyUP(t) {
+                var len = $(t).val().length;
+                if (len > 139) {
+                    $(t).val($(t).val().substring(0, 139));
+                    alert("只能输140个字哦~");
+                }
+            }
+
+            //点击评论创建评论条
+            $(".commentAll").on('click', '.plBtn', function() {
+                var myDate = new Date();
+                //获取当前年
+                var year = myDate.getFullYear();
+                //获取当前月
+                var month = myDate.getMonth() + 1;
+                //获取当前日
+                var date = myDate.getDate();
+                var h = myDate.getHours(); //获取当前小时数(0-23)
+                var m = myDate.getMinutes(); //获取当前分钟数(0-59)
+                if (m < 10) m = '0' + m;
+                var s = myDate.getSeconds();
+                if (s < 10) s = '0' + s;
+                var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
+                //获取输入内容
+                var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
+                //动态创建评论模块
+                oHtml =
+                    '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="../img/headPicture/3.jpg" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;' +
+                    oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now +
+                    '</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+                console.log(oSize);
+                console.log(now);
+                if (oSize.replace(/(^\s*)|(\s*$)/g, "") != '') {
+                    console.log("1");
+                    $(this).parents('.reviewArea').siblings('.comment-show').prepend(oHtml);
+                    $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
+                }
+            });
+
+            //删除评论块
+            $('.commentAll').on('click', '.removeBlock', function() {
+                var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
+                if (oT.siblings('.all-pl-con').length >= 1) {
+                    oT.remove();
+                } else {
+                    $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display', 'none')
+                    oT.remove();
+                }
+                $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
+
+            });
+
+            //点击回复动态创建回复块
+            $(".comment-show").on('click', '.pl-hf', function() {
+                //获取回复人的名字
+                var fhName = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
+                //回复@
+                var fhN = '回复@' + fhName;
+                //var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
+                var fhHtml = '<div class="hf-con pull-left"> <textarea class="content comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
+                //显示回复
+                if ($(this).is('.hf-con-block')) {
+                    $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
+                    $(this).removeClass('hf-con-block');
+                    $('.content').flexText();
+                    $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding', '6px 15px');
+                    //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
+                    //input框自动聚焦
+                    $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
+                } else {
+                    $(this).addClass('hf-con-block');
+                    $(this).parents('.date-dz-right').siblings('.hf-con').remove();
+                }
+            });
+
+            //点赞
+            $('.comment-show').on('click', '.date-dz-z', function() {
+                var zNum = $(this).find('.z-num').html();
+                if ($(this).is('.date-dz-z-click')) {
+                    zNum--;
+                    $(this).removeClass('date-dz-z-click red');
+                    $(this).find('.z-num').html(zNum);
+                    $(this).find('.date-dz-z-click-red').removeClass('red');
+                } else {
+                    zNum++;
+                    $(this).addClass('date-dz-z-click');
+                    $(this).find('.z-num').html(zNum);
+                    $(this).find('.date-dz-z-click-red').addClass('red');
+                }
+            });
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+    <!--头部区-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!--container-fluid 表示为响应式的container, container表示为居中且固定宽度的-->
+        <div class="container ">
+            <div class="navbar-header">
+                <!-- 自适应隐藏导航展开按钮 -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="../index.html">cartoon</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../index.html">home</a></li>
+                    <!--下拉菜单-->
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">list <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="https://www.baidu.com">hunterXhunter</a></li>
+                            <li><a href="../page/hitman.html ">家庭教师Reborn</a></li>
+                            <li><a href="../page/">虫师</a></li>
+                            <li><a href="../page/">钢之炼金术士</a></li>
+                        </ul>
+                        </a>
+                    </li>
+                    <li><a href="#">about</a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--内容区-->
+    <div class="page" id="clear">
+
+        <div class="comic-banner">
+            <img src="../img/banner/hitman-banner.jpg" alt="">
+            <div class="comic-content">
+                <div class="info">
+                    <h1>家教</h1>
+                    <p>作者:天野明</p>
+                    <p>标签:热血,黑手党,少年</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="comic-book">
+                <div id="section">
+                    <a href="javascript:;" id="l1">1-5</a>
+                    <a href="javascript:;" id="l2">6-10</a>
+                </div>
+                <div id="dist">
+                    <ul id="list">
+                        <li>
+                            <a class="post" href="" target="_blank" title="从意大利来的家伙">
+                            <span class="number">第1话</span>
+                            <span>从意大利来的家伙</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a class="post" href="" target="_blank" title="死气弹无法使用">
+                            <span class="number">第2话</span>
+                            <span>死气弹无法使用</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a class="post" href="#" target="_blank" title="狱寺隼人">
+                            <span class="number">第3话</span>
+                            <span>狱寺隼人</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a class="post" href="#" target="_blank" title="退学危机">
+                            <span class="number">第4话</span>
+                            <span>退学危机</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a class="post" href="#" target="_blank" title="山本武">
+                            <span class="number">第5话</span>
+                            <span>山本武</span>
+                        </a>
+                        </li>
+                    </ul>
+
+                    <ul id="list2">
+                        <li>
+                            <a class="post" href="#" target="_blank" title="俄罗斯式轮盘赌">
+                            <span class="number">第6话</span>
+                            <span>俄罗斯式轮盘赌</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a class="post" href="#" target="_blank" title="爱哭鬼蓝波">
+                            <span class="number">第7话</span>
+                            <span>爱哭鬼蓝波</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a class="post" href="#" target="_blank" title="家族入门测试">
+                            <span class="number">第8话</span>
+                            <span>家族入门测试</span>
+                        </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <!--评论区-->
+            <div class="grid">
+                <div class="grad-1 ">
+
+                    <div class="commentAll">
+
+                        <!--评论书写区域 begin-->
+                        <div class="reviewArea clearfix">
+                            <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
+                            <a href="javascript:;" class="plBtn">评论</a>
+                        </div>
+
+                        <!--评论书写区域 end-->
+
+                        <!--评论区域头部 begin-->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="" role="tab" data-toggle="tab">评论</a></li>
+                        </ul>
+                        <!--评论区域头部 end-->
+
+                        <!-- 热门评论begin-->
+                        <div class="list-block">
+                            <div class="block-title">
+                                <div class="title-name">
+                                </div>
+                                <p>热门评论</p>
+                            </div>
+                        </div>
+                        <!-- 热门评论 end-->
+
+                        <!--回复区域 begin-->
+                        <div class="comment-show">
+                            <div class="comment-show-con clearfix">
+                                <div class="comment-show-con-img pull-left"><img src="../img/headPicture/1.jpeg" alt=""></div>
+                                <div class="comment-show-con-list pull-left clearfix">
+                                    <div class="pl-text clearfix">
+                                        <a href="#" class="comment-size-name">六月的雨 : </a>
+                                        <span class="my-pl-con">&nbsp;不知道啊，随便写的。
+</span>
+                                    </div>
+                                    <div class="date-dz">
+                                        <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
+                                        <div class="date-dz-right pull-right comment-pl-block">
+                                            <a href="javascript:;" class="removeBlock">删除</a>
+                                            <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                            <span class="pull-left date-dz-line">|</span>
+                                            <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                        </div>
+                                    </div>
+                                    <div class="hf-list-con"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--回复区域 end-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!--脚部区-->
+        <footer id="footer"></footer>
+
+
+
+        <script src="../js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="../js/jquery.flexText.js"></script>
+
+
+
+
+</body>
+
+</html>

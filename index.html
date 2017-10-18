@@ -1,153 +1,306 @@
-<!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <meta name="HandheldFriendly" content="true">
-        <!--My css input here-->
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/style.css">
-        <!--js input here-->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+<!--design by LX-->
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-        <!-- My site will write down here -->
-<!--头部区-->
-<div id="nav">
-<!--brand 和菜单栏-->
-    <div id="nav_inner">
-        <div id="brand">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- [if lt IE 9] > -->
+    <title>个人喜欢漫画合集</title>
+
+    <style>
+        /*iphone 6*/
+
+        @media screen and (max-width:768px) {
+            .carousel-caption h1 {
+                font-size: 24px;
+                color: #fff;
+            }
+            .carousel-caption>.btn-lg {}
+
+
+        }
+
+        @media screen and (max-device-width:375px) {
+            .carousel-caption h1 {
+                font-size: 16px;
+                color: #fff;
+            }
+        }
+
+
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        .carousel {
+            /*height: 600px;*/
+            background-color: #222;
+        }
+
+        .carousel .item {
+            /*height: 600px;*/
+            top: 50px;
+            background-color: #222;
+            inherit
+        }
+
+        .carousel img {
+            max-width: 100%;
+            height: 1200px;
+            ;
+        }
+
+        .carousel-caption p {
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        .carousel-inner {
+            background-color: #222;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .img-circle {
+            margin-top: 25px;
+            width: 70%;
+        }
+
+        #summary-container {
+            font-size: 16px;
+            text-align: center;
+
+        }
+
+        hr.divider {
+            margin: 40px 0;
+        }
+
+        .feature {
+            padding: 30px 0;
+        }
+
+        .feature-heading {
+            font-size: 40px;
+            color: #2A6496;
+            margin-top: 80px;
+
+        }
+
+        .tab-pane img {
+            width: 100%;
+        }
+
+
+        /*单行文本溢出*/
+
+        .inOneLine {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /*多行文本溢出*/
+
+        .inTwoLine {
+            cursor: pointer;
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--在html5中导航条固定是nav，class=navbar 表示这个是个导航栏，navbar-default表示为导航条默认样式，role 为navigation表示这为一个导航栏-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!--container-fluid 表示为响应式的container, container表示为居中且固定宽度的-->
+        <div class="container ">
+            <div class="navbar-header">
+                <!-- 自适应隐藏导航展开按钮 -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+                <a class="navbar-brand" href="index.html">cartoon</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">home</a></li>
+                    <!--下拉菜单-->
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">list <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="https://www.baidu.com">hunterXhunter</a></li>
+                            <li><a href="page/hitman.html ">家庭教师Reborn</a></li>
+                            <li><a href="page/">虫师</a></li>
+                            <li><a href="page/">钢之炼金术士</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">about</a></li>
+                    <li></li>
+
+                </ul>
+            </div>
         </div>
-        <div id="bar">
-            <ul>
-                <li><a href=""><span>Home</span></a></li>
-                <li><a href=""><span>List</span></a></li>
-                <li><a href=""><span>Case</span></a></li>
-                <li><a href=""><span>More</span></a></li>
-            </ul>
-        </div>
-        <div id="search">
-            <span>搜索</span><input type="text" value="" />
-        </div>
-        <div id="register">
-            <ul>
-                <li><a href="">登录</a></li>
-                <li><a href="">注册</a></li>
-            </ul>
-        </div>
-    </div>
+    </nav>
 
-</div>
-
-<!--轮播图-->
-<div id="carousel">
-
-    <div id="carousel_inner">
-
-        <!--图片导航圆圈---->
-        <ol class="indicator">
-            <li></li>
-            <li></li>
-            <li></li>
+    <!--滚动图片-->
+    <div id="ad-carousel" class="carousel slide" data-slide="carousel">
+        <!-- 圆形导航栏-->
+        <ol class="carousel-indicators">
+            <!-- data-slide-to对应的是图片的index-->
+            <li data-target="#ad-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#ad-carousel" data-slide-to="1"></li>
+            <li data-target="#ad-carousel" data-slide-to="2"></li>
+            <li data-target="#ad-carousel" data-slide-to="3"></li>
         </ol>
+        <div class="carousel-inner " role="listbox">
+            <div class="item active">
+                <img src="img/1.jpg" alt="hunterXhunter" class="img-responsive center-block " />
+                <div class="container_carousel">
+                    <div class="carousel-caption ">
+                        <h1>《全职猎人》(hunterXhunter)</h1>
+                        <p><a href="" class="btn-lg btn-primary" role="button">点我观看</a></p>
+                    </div>
+                </div>
+            </div>
 
-        <!--轮播图片-->
-        <!--<img src="img/1.jpg" alt="1">-->
-        <!--<img src="img/2.jpg" alt="2">-->
-        <img src="img/3.jpg" alt="3">
-
-        <!--左右切换图片-->
-        <div class="control" id="control-left">
-            <span ><</span>
+            <div class="item">
+                <img src="img/2.jpg" alt="家庭教师Reborn" class="img-responsive center-block " role="button" />
+                <div class="carousel-caption">
+                    <h1>《家庭教师Reborn!》</h1>
+                    <p><a href="" class="btn-lg btn-primary" role="button">点我观看</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/3.jpg" alt="虫师" class="img-responsive center-block " />
+                <div class="carousel-caption">
+                    <h1>《虫师》</h1>
+                    <p><a href="" class="btn-lg btn-primary" role="button">点我观看</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/4.jpg" alt="钢之炼金术士" class="img-responsive center-block " />
+                <div class="carousel-caption">
+                    <h1>《钢之炼金术士》</h1>
+                    <p><a href="" class="btn-lg btn-primary" role="button">点我观看</a></p>
+                </div>
+            </div>
         </div>
-        <div class="control" id="control-right" >
-            <span >></span>
-        </div>
+        <!--左右选择图片-->
+        <a class="left carousel-control" href="#ad-carousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#ad-carousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 
-</div>
-
-<!--内容区 -->
-<div id="content">
-        <!--第一个展示漫画及简介-->
-    <div id="tab1">
-        <!--tab1内部div包括图片和简介-->
-        <div class="container">
-            <!--展示漫画封面-->
-            <div class="container_img" id="one_img" >
-                <a href=""><img src="img/s6.JPG" alt="s6"></a>
+    <!--主要内容-->
+    <div class="container" id="summary-container">
+        <div class="row">
+            <div class="col-md-3 col-xs-6 ">
+                <img class="img-circle col-xs-6 col-xs-offset-3" src="img/small/hunter-logo-small.jpg" alt="hunter" />
+                <p>《全职猎人》是日本漫画家富坚义博的一部漫画作品。</p>
             </div>
-            <!--展示漫画简介-->
-            <div  class="container_text" id="one_text">
-                <a href=""><h3>《全职猎人》(hunter X hunter)</h3></a>
-                <p>杰·富力士从小在鲸鱼岛长大，与米特阿姨和阿婆相依为伴。性格开朗的他，有着能与动物沟通的灵性。因为无                   无母，杰将米特阿姨当成自己的生母爱着。直到9岁那一年，杰在森林里被一位青年男子搭救。从他口中杰得知                    自……
-                </p>
-            </div >
-        </div>
-    </div>
-
-    <!--第二个展示漫画及简介-->
-    <div id="tab2">
-        <!--tab2内部div包括图片和简介-->
-        <div class="container">
-            <!--展示漫画封面-->
-            <div class="container_img" id="two_img" >
-                <a href=""><img src="img/s6.JPG" alt="s6"></a>
+            <div class="col-md-3 col-xs-6 ">
+                <img class="img-circle col-xs-6 col-xs-offset-3" src="img/small/reborn-logo-small.jpg" alt="hitman" />
+                <p>《家庭教师》是日本漫画家天野明在《周刊少年JUMP》上连载的热血少年漫画。</p>
             </div>
-            <!--展示漫画简介-->
-            <div  class="container_text" id="two_text">
-                <a href=""><h3>《家庭教师Reborn!》</h3></a>
-                <p>《家庭教师HitmanReborn!》是一部关于黑手党的动漫。故事围绕意大利黑手党彭格列家族第十代首领沢田纲吉                     家……
-                </p>
+            <div class="col-md-3 col-xs-6 ">
+                <img class="img-circle col-xs-6 col-xs-offset-3" src="img/small/chong-logo-small.jpg" alt="chongshi" />
+                <p>动画《虫师》改编自日本漫画家漆原友纪原作的同名漫画。</p>
+            </div>
+            <div class="col-md-3 col-xs-6 ">
+                <img class="img-circle col-xs-6 col-xs-offset-3" src="img/small/gang-logo-small.jpg" alt="gang" />
+                <p>《钢之炼金术师》是根据日本漫画家荒川弘创作的漫画作品改编的同名电视动画。</p>
             </div>
         </div>
-    </div>
+        <hr class="divider" />
 
-    <!--第三个展示漫画及简介-->
-    <div id="tab3">
-        <!--tab2内部div包括图片和简介-->
-        <div class="container">
-            <!--展示漫画封面-->
-            <div class="container_img" id="thr_img">
-                <a href=""><img src="img/s6.JPG" alt="s6"></a>
+
+        <!-- 标签页-->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#tab-hunter" role="tab" data-toggle="tab">《全职猎人》</a></li>
+            <li><a href="#tab-reborn" role="tab" data-toggle="tab">《家庭教师》</a></li>
+            <li><a href="#tab-chong" role="tab" data-toggle="tab">《虫师》</a></li>
+            <li><a href="#tab-gang" role="tab" data-toggle="tab">《钢之炼金术师》</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab-hunter">
+                <div class="row feature">
+                    <div class="col-md-7">
+                        <h2 class="feature-heading">《全职猎人》(hunter X hunter)</h2>
+                        <p class="lead inTwoLine">
+                            主人公杰·富力士从小在鲸鱼岛长大，与米特阿姨和阿婆相依为伴。 性格开朗的他，有着能与动物沟通的灵性。因为无父无母，杰将米特阿姨当成自己的生母爱着。 直到9岁那一年，杰在森林里被一位青年男子搭救。从他口中杰得知自己的父亲还活着而且职业是猎人。在说服米特阿姨之后，杰独自踏上了寻父的征程。于是，杰决定成为猎人，从这里开始找寻他父亲的踪迹。靠这样一种信念开始了冒险旅途，并在旅途当中结交好友，不断成长，从而引发了后面的所有故事，引出猎人的精彩世界。
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="feature-image img-circle" src="img/small/hunter-logo-small.jpg" alt="hunter" />
+                    </div>
+                </div>
             </div>
-            <!--展示漫画简介-->
-            <div  class="container_text" id="thr_text">
-                <a href=""><h3>《家庭教师HitmanReborn!》</h3></a>
-                <p>《家庭教师HitmanReborn!》是一部关于黑手党的动漫。故事围绕意大利黑手党彭格列家族第十代首领沢田纲吉                    与家族成员的成长而展开的一系列故事。彭格列初代后裔沢田纲吉是一名做什么都不行的“废柴纲”，但为了……
-                </p>
+
+            <div class="tab-pane" id="tab-reborn">
+                <div class="row feature">
+                    <div class="col-md-5">
+                        <img class="feature-image img-circle" src="img/small/reborn-logo-small.jpg" alt="hitman" />
+                    </div>
+                    <div class="col-md-7">
+                        <h2 class="feature-heading">《家庭教师》</h2>
+                        <p class="lead inTwoLine">
+                            故事围绕彭格列（意大利黑手党）第十代首领沢田纲吉与其家族成员的成长而展开的一系列故事。彭格列初代后裔沢田纲吉是一个做什么都不行的“废柴纲”，但是为了培养成为彭格列家族首领，从意大利来了一名杀手叫做里包恩来教导纲吉。内心善良的他不愿意伤害别人，但他为了保护同伴而开始承担起责任，成长为一名优秀的首领。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab-chong">
+                <div class="row feature">
+                    <div class="col-md-7">
+                        <h2 class="feature-heading">《虫师》</h2>
+                        <p class="lead inTwoLine">
+                            另一个世界，住着一群与常见动植物截然不同的生物。远古以来，人们敬畏地称它们为“虫”。当虫的世界和人的世界重合时，虫师银 古便会出现。 这些虫显然不是看上去肉呼呼扭动的小东西，而是一种最接近生命本源，类似灵体的生物。它们有自己的生存方式，而这种方式却可能有悖于人类的常识，甚至危害人类的生存。于是就出现了“虫师”这种职业，他们云游四方，对虫的生命形态，生存方式进行研究，并接受人们的委托，解决可能是由虫引起的怪异事件。银古，正是他们的一员。
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="feature-image img-circle" src="img/small/chong-logo-small.jpg" alt="chong" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab-gang">
+                <div class="row feature">
+                    <div class="col-md-5">
+                        <img class="feature-image img-circle" src="img/small/gang-logo-small.jpg" alt="gang" />
+                    </div>
+                    <div class="col-md-7">
+                        <h2 class="feature-heading">《钢之炼金术师》</h2>
+                        <p class="lead inTwoLine">
+                            故事发生在一个炼金术相当发达的世界，在这个世界的“炼金术”，是以理解物质的内在的法则：理解，分解，再构造成立，进行炼金术必须按照“等价交换”法则：为了获得某种东西，需要以同等的代价交换，代价不够的话便需要以自己的任何部份（身体的一部分、记忆等等）被作为代价的填补而被拿走。
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/3.2.1/umd/popper.min.js"></script> -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
 
-</div>
-        <!--脚部区-->
-        <div id="footer"></div>
-
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-                e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-                e.src='https://www.google-analytics.com/analytics.js';
-                r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
-    </body>
 </html>

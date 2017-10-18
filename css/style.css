@@ -1,28 +1,39 @@
 
-/*顶部的banner*/
-#nav{
-    height: 50px;
-    width: auto;
-    background-color: #241f1e;
-
+div{
+    display: block;
 }
 
+/*顶部的banner*/
 
+#nav{
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background-color: #241f1e;
+    line-height: 50px;
+    z-index: 999;
+    top:0;
+    left: 0;
+    box-shadow: 1px 1px 3px 0 navajowhite;
+}
 
 
 /*banner中的内容*/
 #nav_inner{
-    height: 50px;
-    width: 95%;
-    background-color:#2e2826;
     margin: 0 auto;
+    position: relative;
+    /*position: fixed;*/
+    height: 50px;
+    width: 100%;
+    min-width:1100px ;
+    background-color:#2e2826;
     /*盒子模型布局--定义父节点*/
     display: flex;
 
 }
 #brand{
     height: 50px;
-    width: 20%;
+    width: 15%;
     /*盒子模型布局--子节点实现*/
     -webkit-flex-flow: row nowrap;
     -moz-flex-flow:row nowrap;
@@ -31,7 +42,7 @@
 }
 #bar{
     height: auto;
-    width: 50%;
+    width: 55%;
     background-color: #2e2826;
     -webkit-flex-flow: row nowrap;
     -moz-flex-flow:row nowrap;
@@ -118,68 +129,125 @@
 
 
 /*轮播图*/
-#carousel{width: auto;}
+#carousel{
+    width: auto;
+    background-color:#b0acab;
+    text-align: center;
+}
 
 
 /*轮播图内部灰色背景区*/
 #carousel_inner{
-    width:100%;
-    background-color: #b0acab;
+    height: 620px;
+    width: 1280px;
+    background-color:#b0acab;
     margin: 0 auto;
     position: relative;
 }
 
-.control{
-    width: 8%;
+/*轮播图内图片*/
+ul li,a {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.bigPicture{
+    width: 1280px;
+    height: 620px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.bigPicture li{
+    width: 1280px;
+    height: 620px;
+    position: absolute;
+    margin: 0 auto;
+}
+/*图片的左右两边显示按钮的范围*/
+.control_left{
+    width: 30%;
+    height: auto;
     position: absolute;
     top:0;
     bottom: 0;
-    font-size: 80px;
+    font-size: 90px;
     text-align: center;
     line-height: 550px;
-    color: #cdcdcd;
-    opacity: 0.5;
+    z-index: 2000;
+    left: -10px;
+
+}
+.control_right{
+    width: 30%;
+    height: auto;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    font-size: 90px;
+    text-align: center;
+    line-height: 550px;
+    right:-10px;
+    z-index: 2000;
 }
 
-.control:hover{
-    color: #FFFFFF;
-    opacity: 1;
+/*图片的左右按钮*/
+.preview{
+    height: 620px;
+    position: absolute;
+    z-index: 2000;
+    left: 10px;
+    filter: alpha(opacity:0);
+    opacity: 0;
+    cursor: pointer;
+
 }
 
-#control-left{left: 0;}
+.next{
+    height: 620px;
+    position: absolute;
+    z-index: 2000;
+    right: 10px;
+    filter: alpha(opacity:0);
+    opacity: 0;
+    cursor: pointer;
+}
 
-#control-right{right: 0;}
+
+.control_left ,.control_right {
+    text-decoration: none;
+    color: #ffffff;
+}
 
 
 /*图片导航圆圈*/
-.indicator{
+#indicator{
+    display: inline;
     position: absolute;
     left: 50%;
+    width: auto;
     text-align: center;
-    list-style-type: none;
-    bottom: 4%;
+    bottom: 2%;
+    cursor: pointer;
+    z-index: 5000;
+    margin: 10px auto 10px;
+
 }
 
-.indicator li{
-    position: relative;
+#indicator li{
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    border: 1px solid #FFFFFF;
+    position: relative;
+    height: 13px;
+    width: 13px;
+    border: 2px solid #cdcdcd;
     border-radius: 10px;
-    margin: 2px;
+    background-color: #ffffff;
+    margin: 4px;
+    filter: alpha(opacity:40);
+    opacity: 0.4;
 }
 
-.indicator li:hover{  background-color: #FFFFFF;  }
-
-/*轮播图内图片*/
-#carousel_inner img{
-    margin: 0 auto;
-    display: block;
-    max-width: 90%;
-    height: auto;
-
-}
 
 
 
@@ -190,13 +258,15 @@
     text-decoration: none;
 }
 
-#content a:hover{ color: #FFFFFF;  }
+#content a:hover{
+    color: #FFFFFF;
+
+}
 
 
 /*第一个展示漫画简介外部灰色背景框*/
 #tab1{
-    /*width: auto;*/
-    /*height:290px;*/
+    position: relative;
     padding: 20px;
     background: #f2f1ef;
     text-align: center;
@@ -221,7 +291,6 @@
     max-width: 90%;
     /*上两句实现图片的排列贴着轮播图边缘*/
     height:  260px;
-    /*display: inline-block;*/
 }
 
 /*tab内部内容区域,包含漫画封面的div*/
@@ -231,13 +300,9 @@
     padding: 10px 10px;
 }
 
-#one_img,#thr_img{
-    float: left;
-}
+#one_img,#thr_img{  float: left; }
 
-#two_img{
-    float: right;
-}
+#two_img{  float: right;  }
 
 .container_img img{
     max-width: 90%;
@@ -282,9 +347,18 @@
     overflow: hidden;
 }
 
+/*多行文本溢出*/
 
+.inTwoLine {
+    cursor: pointer;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 
-
+}
 
 #footer{
     height: 150px;
